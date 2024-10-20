@@ -281,3 +281,8 @@ h1 {
 .error p {
   font-size: 1.2em;
 }
+
+.center {
+  text-align: center;
+  margin: 20px auto; /* Adds vertical spacing and centers it horizontally */
+}
