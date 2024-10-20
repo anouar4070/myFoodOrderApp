@@ -260,3 +260,24 @@ h1 {
     transform: translateY(0);
   }
 }
+
+.error {
+  color: red;
+  text-align: center;
+  background-color: #fdd; /* Light red background */
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: 5px;
+  width: 50%;
+  margin: 20px auto; /* Centers the element horizontally */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+}
+
+.error h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.error p {
+  font-size: 1.2em;
+}
