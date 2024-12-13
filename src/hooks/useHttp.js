@@ -51,3 +51,7 @@ export default function useHttp(url, config, initialData) {
     clearData
   };
 }
+
+/**Using the custom hook Without initialData:
+
+* If you don't provide an initialData value when using useHttp, data starts as undefined. This is valid because your component and logic handle the state correctly later (e.g., after sendRequest is called and updates data). */

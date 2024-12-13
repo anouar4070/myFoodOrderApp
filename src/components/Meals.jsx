@@ -2,7 +2,7 @@ import useHttp from "../hooks/useHttp";
 import Error from "./Error";
 import MealItem from "./MealItem";
 
-const requestConfig = {};
+const requestConfig = {}; //created outside to avoid infinite loop 
 
 export default function Meals() {
  const {
@@ -18,9 +18,6 @@ export default function Meals() {
 if(error) {
   return <Error title="Failed to fetch meals" message={error} />
 }
-
-
-
 
 
   // if (!data) {

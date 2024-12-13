@@ -83,6 +83,8 @@ export function CartContextProvider({ children }) {
 
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
+    // with React version > 19 :
+    // <CartContext value={cartContext}>{children}</CartContext>
   );
 }
 
