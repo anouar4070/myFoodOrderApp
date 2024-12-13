@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useActionState } from "react";
 import Modal from "./UI/Modal";
 import CartContext from "../store/cardContaxt";
 import { currencyFormatter } from "../util/formatting";
@@ -21,7 +21,7 @@ export default function Checkout() {
 
   const {
     data,
-    isLoading: isSending,
+    // isLoading: isSending,
     error,
     sendRequest,
     clearData,
@@ -42,10 +42,10 @@ export default function Checkout() {
     clearData();
   }
 
-  async function checkoutAction(fd) {
- const customerData = Object.fromEntries(fd.entries()); //{email: g.anouar@yahoo.com}
+  async function checkoutAction(prevState, fd) {
+    const customerData = Object.fromEntries(fd.entries()); //{email: g.anouar@yahoo.com}
 
-  await sendRequest(
+    await sendRequest(
       JSON.stringify({
         order: {
           items: cartCtx.items,
@@ -54,6 +54,11 @@ export default function Checkout() {
       })
     );
   }
+
+  const [formState, formAction, isSending] = useActionState(
+    checkoutAction,
+    null
+  );
 
   let actions = (
     <>
@@ -89,7 +94,7 @@ export default function Checkout() {
 
   return (
     <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
-      <form action={checkoutAction}>
+      <form action={formAction}>
         <h2>Checkout</h2>
         <p>Total Amount: {currencyFormatter.format(cartTotal)} </p>
 
@@ -108,7 +113,6 @@ export default function Checkout() {
     </Modal>
   );
 }
-
 
 //& approach with React version < 19
 // import { useContext } from "react";
